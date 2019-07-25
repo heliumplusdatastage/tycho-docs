@@ -1,0 +1,458 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>api module &mdash; Tycho 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Tycho
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">api module</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Tycho</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>api module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/api.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-api">
+<span id="api-module"></span><h1>api module<a class="headerlink" href="#module-api" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="api.DeleteSystemResource">
+<em class="property">class </em><code class="sig-prename descclassname">api.</code><code class="sig-name descname">DeleteSystemResource</code><a class="headerlink" href="#api.DeleteSystemResource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#api.TychoResource" title="api.TychoResource"><code class="xref py py-class docutils literal notranslate"><span class="pre">api.TychoResource</span></code></a></p>
+<p>System termination. Given a GUID for a Tycho system, use Tycho core to eliminate all
+components comprising the running system.</p>
+<dl class="attribute">
+<dt id="api.DeleteSystemResource.endpoint">
+<code class="sig-name descname">endpoint</code><em class="property"> = 'deletesystemresource'</em><a class="headerlink" href="#api.DeleteSystemResource.endpoint" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="api.DeleteSystemResource.mediatypes">
+<code class="sig-name descname">mediatypes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#api.DeleteSystemResource.mediatypes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="api.DeleteSystemResource.methods">
+<code class="sig-name descname">methods</code><em class="property"> = {'POST'}</em><a class="headerlink" href="#api.DeleteSystemResource.methods" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="api.DeleteSystemResource.post">
+<code class="sig-name descname">post</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#api.DeleteSystemResource.post" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete a system based on a name.
+—
+tag: start
+description: Delete a system on the compute fabric.
+requestBody:</p>
+<blockquote>
+<div><p>description: System start message.
+required: true
+content:</p>
+<blockquote>
+<div><dl class="simple">
+<dt>application/json:</dt><dd><dl class="simple">
+<dt>schema:</dt><dd><p>$ref: ‘#/components/schemas/DeleteRequest’</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div></blockquote>
+</div></blockquote>
+<dl>
+<dt>responses:</dt><dd><dl>
+<dt>‘200’:</dt><dd><p>description: Success
+content:</p>
+<blockquote>
+<div><dl class="simple">
+<dt>application/json:</dt><dd><dl class="simple">
+<dt>schema:</dt><dd><p>type: string
+example: “Successfully validated”</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div></blockquote>
+</dd>
+<dt>‘400’:</dt><dd><p>description: Malformed message
+content:</p>
+<blockquote>
+<div><dl class="simple">
+<dt>text/plain:</dt><dd><dl class="simple">
+<dt>schema:</dt><dd><p>type: string</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div></blockquote>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="api.StartSystemResource">
+<em class="property">class </em><code class="sig-prename descclassname">api.</code><code class="sig-name descname">StartSystemResource</code><a class="headerlink" href="#api.StartSystemResource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#api.TychoResource" title="api.TychoResource"><code class="xref py py-class docutils literal notranslate"><span class="pre">api.TychoResource</span></code></a></p>
+<p>Parse, model, emit orchestrator artifacts and execute a system.</p>
+<dl class="attribute">
+<dt id="api.StartSystemResource.endpoint">
+<code class="sig-name descname">endpoint</code><em class="property"> = 'startsystemresource'</em><a class="headerlink" href="#api.StartSystemResource.endpoint" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="api.StartSystemResource.mediatypes">
+<code class="sig-name descname">mediatypes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#api.StartSystemResource.mediatypes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="api.StartSystemResource.methods">
+<code class="sig-name descname">methods</code><em class="property"> = {'POST'}</em><a class="headerlink" href="#api.StartSystemResource.methods" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="api.StartSystemResource.post">
+<code class="sig-name descname">post</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#api.StartSystemResource.post" title="Permalink to this definition">¶</a></dt>
+<dd><p>Start a system based on a specification on the compute fabric.</p>
+<p>The specification is a docker-compose yaml parsed into a JSON object.
+—
+tag: start
+description: Start a system on the compute fabric.
+requestBody:</p>
+<blockquote>
+<div><p>description: System start message.
+required: true
+content:</p>
+<blockquote>
+<div><dl class="simple">
+<dt>application/json:</dt><dd><dl class="simple">
+<dt>schema:</dt><dd><p>$ref: ‘#/components/schemas/System’</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div></blockquote>
+</div></blockquote>
+<dl>
+<dt>responses:</dt><dd><dl>
+<dt>‘200’:</dt><dd><p>description: Success
+content:</p>
+<blockquote>
+<div><dl class="simple">
+<dt>text/plain:</dt><dd><dl class="simple">
+<dt>schema:</dt><dd><p>type: string
+example: “Successfully validated”</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div></blockquote>
+</dd>
+<dt>‘400’:</dt><dd><p>description: Malformed message
+content:</p>
+<blockquote>
+<div><dl class="simple">
+<dt>text/plain:</dt><dd><dl class="simple">
+<dt>schema:</dt><dd><p>type: string</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div></blockquote>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="api.StatusSystemResource">
+<em class="property">class </em><code class="sig-prename descclassname">api.</code><code class="sig-name descname">StatusSystemResource</code><a class="headerlink" href="#api.StatusSystemResource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#api.TychoResource" title="api.TychoResource"><code class="xref py py-class docutils literal notranslate"><span class="pre">api.TychoResource</span></code></a></p>
+<p>Status executing systems. Given a GUID (or not) determine system status.</p>
+<dl class="attribute">
+<dt id="api.StatusSystemResource.endpoint">
+<code class="sig-name descname">endpoint</code><em class="property"> = 'statussystemresource'</em><a class="headerlink" href="#api.StatusSystemResource.endpoint" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="api.StatusSystemResource.mediatypes">
+<code class="sig-name descname">mediatypes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#api.StatusSystemResource.mediatypes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="api.StatusSystemResource.methods">
+<code class="sig-name descname">methods</code><em class="property"> = {'POST'}</em><a class="headerlink" href="#api.StatusSystemResource.methods" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="api.StatusSystemResource.post">
+<code class="sig-name descname">post</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#api.StatusSystemResource.post" title="Permalink to this definition">¶</a></dt>
+<dd><p>Status running systems.
+—
+tag: start
+description: Status running systems.
+requestBody:</p>
+<blockquote>
+<div><p>description: List systems.
+required: true
+content:</p>
+<blockquote>
+<div><dl class="simple">
+<dt>application/json:</dt><dd><dl class="simple">
+<dt>schema:</dt><dd><p>$ref: ‘#/components/schemas/StatusRequest’</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div></blockquote>
+</div></blockquote>
+<dl>
+<dt>responses:</dt><dd><dl>
+<dt>‘200’:</dt><dd><p>description: Success
+content:</p>
+<blockquote>
+<div><dl class="simple">
+<dt>application/json:</dt><dd><dl class="simple">
+<dt>schema:</dt><dd><p>type: string
+example: “Successfully validated”</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div></blockquote>
+</dd>
+<dt>‘400’:</dt><dd><p>description: Malformed message
+content:</p>
+<blockquote>
+<div><dl class="simple">
+<dt>text/plain:</dt><dd><dl class="simple">
+<dt>schema:</dt><dd><p>type: string</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div></blockquote>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="api.TychoResource">
+<em class="property">class </em><code class="sig-prename descclassname">api.</code><code class="sig-name descname">TychoResource</code><a class="headerlink" href="#api.TychoResource" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">flask_restful.Resource</span></code></p>
+<p>Base class handler for Tycho API requests.</p>
+<dl class="method">
+<dt id="api.TychoResource.create_response">
+<code class="sig-name descname">create_response</code><span class="sig-paren">(</span><em class="sig-param">result=None</em>, <em class="sig-param">status='success'</em>, <em class="sig-param">message=''</em>, <em class="sig-param">exception=None</em><span class="sig-paren">)</span><a class="headerlink" href="#api.TychoResource.create_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a response. Handle formatting and modifiation of status for exceptions.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="api.TychoResource.validate">
+<code class="sig-name descname">validate</code><span class="sig-paren">(</span><em class="sig-param">request</em>, <em class="sig-param">component</em><span class="sig-paren">)</span><a class="headerlink" href="#api.TychoResource.validate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validate a request against the schema.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="data">
+<dt id="api.app">
+<code class="sig-prename descclassname">api.</code><code class="sig-name descname">app</code><em class="property"> = &lt;Flask 'api'&gt;</em><a class="headerlink" href="#api.app" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enable CORS.</p>
+</dd></dl>
+
+<dl class="data">
+<dt id="api.debug">
+<code class="sig-prename descclassname">api.</code><code class="sig-name descname">debug</code><em class="property"> = False</em><a class="headerlink" href="#api.debug" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load the schema.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="api.tycho">
+<code class="sig-prename descclassname">api.</code><code class="sig-name descname">tycho</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#api.tycho" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Steve Cox
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
