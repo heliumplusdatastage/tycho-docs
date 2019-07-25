@@ -1,0 +1,358 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>client module &mdash; Tycho 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Tycho
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">client module</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Tycho</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>client module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/client.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-client">
+<span id="client-module"></span><h1>client module<a class="headerlink" href="#module-client" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="client.TychoClient">
+<em class="property">class </em><code class="sig-prename descclassname">client.</code><code class="sig-name descname">TychoClient</code><span class="sig-paren">(</span><em class="sig-param">url</em><span class="sig-paren">)</span><a class="headerlink" href="#client.TychoClient" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Python client to Tycho dynamic application deployment API.</p>
+<dl class="method">
+<dt id="client.TychoClient.delete">
+<code class="sig-name descname">delete</code><span class="sig-paren">(</span><em class="sig-param">request</em><span class="sig-paren">)</span><a class="headerlink" href="#client.TychoClient.delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete a service.</p>
+<p>Given the GUID of a running service, delete it and all its constituent parts.</p>
+<p>The general format of a delete request is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+   <span class="s2">&quot;name&quot;</span> <span class="p">:</span> <span class="o">&lt;</span><span class="n">GUID</span><span class="o">&gt;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>request</strong> (<em>JSON</em>) – A request formatted as above.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="client.TychoClient.down">
+<code class="sig-name descname">down</code><span class="sig-paren">(</span><em class="sig-param">names</em><span class="sig-paren">)</span><a class="headerlink" href="#client.TychoClient.down" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bring down a service.</p>
+<p>CLI endpoint for deleting running systems.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tycho</span> <span class="n">down</span> <span class="o">&lt;</span><span class="n">GUID</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>names</strong> – GUIDs of systems to delete.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="client.TychoClient.format_name">
+<code class="sig-name descname">format_name</code><span class="sig-paren">(</span><em class="sig-param">name</em><span class="sig-paren">)</span><a class="headerlink" href="#client.TychoClient.format_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Format a service name to be a valid DNS label.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> – Format a name.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="client.TychoClient.list">
+<code class="sig-name descname">list</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">terse=False</em><span class="sig-paren">)</span><a class="headerlink" href="#client.TychoClient.list" title="Permalink to this definition">¶</a></dt>
+<dd><p>List status of executing systems.</p>
+<p>CLI endpoint to list status of services.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tycho</span> <span class="n">status</span>
+<span class="n">tycho</span> <span class="n">status</span> <span class="o">-</span><span class="n">terse</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – GUID of a service to get status for.</p></li>
+<li><p><strong>terse</strong> (<em>boolean</em>) – Print just the GUID for running systems</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="client.TychoClient.request">
+<code class="sig-name descname">request</code><span class="sig-paren">(</span><em class="sig-param">service</em>, <em class="sig-param">request</em><span class="sig-paren">)</span><a class="headerlink" href="#client.TychoClient.request" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send a request to the server. Generic underlayer to all requests.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>service</strong> – URL path to the service to invoke.</p></li>
+<li><p><strong>request</strong> – JSON to send to the API endpoint.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="client.TychoClient.start">
+<code class="sig-name descname">start</code><span class="sig-paren">(</span><em class="sig-param">request</em><span class="sig-paren">)</span><a class="headerlink" href="#client.TychoClient.start" title="Permalink to this definition">¶</a></dt>
+<dd><p>Start a service.</p>
+<p>The general format of a start request is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+   <span class="s2">&quot;name&quot;</span>   <span class="p">:</span> <span class="o">&lt;</span><span class="n">name</span> <span class="n">of</span> <span class="n">the</span> <span class="n">system</span><span class="o">&gt;</span><span class="p">,</span>
+   <span class="s2">&quot;env&quot;</span>    <span class="p">:</span> <span class="o">&lt;</span><span class="n">text</span> <span class="n">of</span> <span class="o">.</span><span class="n">env</span> <span class="n">environment</span> <span class="n">variables</span><span class="o">&gt;</span><span class="p">,</span>
+   <span class="s2">&quot;system&quot;</span> <span class="p">:</span> <span class="o">&lt;</span><span class="n">JSON</span> <span class="n">of</span> <span class="n">a</span> <span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="n">yaml</span><span class="o">&gt;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>request</strong> (<em>JSON</em>) – A request object formatted as above.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="client.TychoClient.status">
+<code class="sig-name descname">status</code><span class="sig-paren">(</span><em class="sig-param">request</em><span class="sig-paren">)</span><a class="headerlink" href="#client.TychoClient.status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get status of running systems.</p>
+<p>Get the status of a system by GUID or across systems.</p>
+<p>The format of a request is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{}</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>request</strong> (<em>JSON</em>) – Request formatted as above.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="client.TychoClient.up">
+<code class="sig-name descname">up</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">system</em>, <em class="sig-param">settings=''</em><span class="sig-paren">)</span><a class="headerlink" href="#client.TychoClient.up" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bring a service up starting with a docker-compose spec.</p>
+<p>CLI endpoint to start a service on the Tycho compute fabric.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tycho</span> <span class="n">up</span> <span class="o">-</span><span class="n">f</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">docker</span><span class="o">-</span><span class="n">compose</span><span class="o">.</span><span class="n">yaml</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – Name of the system.</p></li>
+<li><p><strong>system</strong> (<em>JSON</em>) – Docker-compose JSON structure.</p></li>
+<li><p><strong>settings</strong> (<em>str</em>) – The textual contents of a .env file.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="client.TychoClientFactory">
+<em class="property">class </em><code class="sig-prename descclassname">client.</code><code class="sig-name descname">TychoClientFactory</code><a class="headerlink" href="#client.TychoClientFactory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Locate a Tycho API instance in a Kubernetes cluster.</p>
+<p>This is written to work wheter run in-cluster or standalone. If we’re running outside of 
+the cluster we use the environment’s kubernetes configuration. If we’re running 
+insde kubernetes, we use the “in cluster” configuration to locate the configuration.</p>
+<dl class="method">
+<dt id="client.TychoClientFactory.get_client">
+<code class="sig-name descname">get_client</code><span class="sig-paren">(</span><em class="sig-param">name='tycho-api'</em>, <em class="sig-param">namespace='default'</em><span class="sig-paren">)</span><a class="headerlink" href="#client.TychoClientFactory.get_client" title="Permalink to this definition">¶</a></dt>
+<dd><p>Locate the client endpoint using the K8s API.</p>
+<p>Locate the Tycho API using the K8S API. We do this by reading services in the
+given namespace with the given name. Then we look for a load balancer IP and port 
+to build a URL. This works for public cloud clusters. With some modification, it
+could work for Minikube but that is a future effort.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – Name of the Tycho API service in Kubernetes.</p></li>
+<li><p><strong>namespace</strong> (<em>str</em>) – The namespace the service is deployed to.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Steve Cox
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
