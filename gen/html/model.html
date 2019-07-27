@@ -1,0 +1,259 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>model module &mdash; Tycho 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Tycho
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">model module</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Tycho</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>model module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/model.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-model">
+<span id="model-module"></span><h1>model module<a class="headerlink" href="#module-model" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="model.Container">
+<em class="property">class </em><code class="sig-prename descclassname">model.</code><code class="sig-name descname">Container</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">image</em>, <em class="sig-param">command=None</em>, <em class="sig-param">env=None</em>, <em class="sig-param">identity=None</em>, <em class="sig-param">limits=None</em>, <em class="sig-param">requests=None</em>, <em class="sig-param">ports=[]</em>, <em class="sig-param">volumes=None</em><span class="sig-paren">)</span><a class="headerlink" href="#model.Container" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Invocation of an image in a specific infastructural context.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="model.Limits">
+<em class="property">class </em><code class="sig-prename descclassname">model.</code><code class="sig-name descname">Limits</code><span class="sig-paren">(</span><em class="sig-param">cpus='0.1'</em>, <em class="sig-param">gpus='0'</em>, <em class="sig-param">memory='128M'</em><span class="sig-paren">)</span><a class="headerlink" href="#model.Limits" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Abstraction of resource limits on a container in a system.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="model.Service">
+<em class="property">class </em><code class="sig-prename descclassname">model.</code><code class="sig-name descname">Service</code><span class="sig-paren">(</span><em class="sig-param">port=None</em>, <em class="sig-param">clients=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#model.Service" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Model network connectivity rules to the system.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="model.System">
+<em class="property">class </em><code class="sig-prename descclassname">model.</code><code class="sig-name descname">System</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">containers</em>, <em class="sig-param">services={}</em><span class="sig-paren">)</span><a class="headerlink" href="#model.System" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Distributed system of interacting containerized software.</p>
+<dl class="attribute">
+<dt id="model.System.containers">
+<code class="sig-name descname">containers</code><em class="property"> = None</em><a class="headerlink" href="#model.System.containers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Construct a map of services.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="model.System.parse">
+<em class="property">static </em><code class="sig-name descname">parse</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">system</em>, <em class="sig-param">env={}</em>, <em class="sig-param">services={}</em><span class="sig-paren">)</span><a class="headerlink" href="#model.System.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Construct a system model based on the input request.</p>
+<p>Parses a docker-compose spec into a system specification.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – Name of the system.</p></li>
+<li><p><strong>system</strong> – Parsed docker-compose specification.</p></li>
+<li><p><strong>env</strong> – Dictionary of settings.</p></li>
+<li><p><strong>services</strong> – Service specifications - networking configuration.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="model.System.render">
+<code class="sig-name descname">render</code><span class="sig-paren">(</span><em class="sig-param">template</em>, <em class="sig-param">context={}</em><span class="sig-paren">)</span><a class="headerlink" href="#model.System.render" title="Permalink to this definition">¶</a></dt>
+<dd><p>Supply this system as a context to a template.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>template</strong> – Template</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="model.System.requires_network_policy">
+<code class="sig-name descname">requires_network_policy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#model.System.requires_network_policy" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Steve Cox
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
