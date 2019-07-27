@@ -90,7 +90,7 @@ Command Line Interface
 
 You can use Tycho from the command line to interact with the cluster.
 
-Add the CLI tool to your path (if youve cloned the `repo <https://github.com/heliumplusdatastage/tycho>`_) with::
+Clone the `repo <https://github.com/heliumplusdatastage/tycho>`_) and add the bin directory to your path::
 
     export PATH=<repo>/bin:$PATH
        
@@ -123,14 +123,80 @@ After a few moments, test the service with::
   $ mkip=$(minikube ip)
   $ wget --quiet -O- http://$mkip:$(tycho status | grep jupyter | grep -v PORT | awk '{ print $4 }') | grep "/title"
                          
-And delete the service with: ::
+And delete the service with::
 
   $ tycho down <GUID>
 
 or delete all running services with::
 
   $ tycho down $(tycho status -terse)
-      
+
+                               
+Python API
+==========
+
+To use Tycho from Python, clone the repo and put it in your PYTHONPATH::
+
+  $ export PYTHONPATH=<path/to/tycho/repo>:$PATH                               
+                               
+To connect to a Tycho instance running inside Kubernetes::
+                               
+  from tycho.client import TychoFactory
+  client_factory = TychoClientFactory ()
+  client = client_factory.get_client ()
+
+To connect to a locally running instance::
+
+  from tycho.client import TychoClient
+  client = TychoClient (url="http://localhost:5000")
+
+To start a simple service::
+
+  client.start (
+    request = {
+      "name": "test",
+      "env": {
+        "LOCAL_STORE" : "/data",
+        "HOST_PATH" : "8888"
+      },
+      "system": {
+        "version": "3",
+        "services": {
+          "jupyter-datascience": {
+            "image": "jupyter/datascience-notebook",
+            "entrypoint": "start.sh jupyter lab --LabApp.token=",
+            "ports": [
+              "$HOST_PORT:8888"
+            ],
+            "volumes": [
+              "$LOCAL_STORE:/mydata",
+              "./:/mydata1",
+              "./home:/mydata2"
+            ],
+            "deploy": {
+              "resources": {
+                "limits": {
+                  "cpus": "0.01",
+                  "memory": "50M"
+                },
+                "reservations": {
+                  "cpus": "0.01",
+                  "memory": "20M"
+                }
+              }
+            }
+          }
+        }
+      },
+      "services": {
+        "jupyter-datascience": {
+          "port": "8888"
+        }
+      } 
+    })
+  response = client.start (request)
+                  
+                
 Indices and tables
 ==================
 

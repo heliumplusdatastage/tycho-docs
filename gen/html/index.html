@@ -91,6 +91,7 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#command-line-interface">Command Line Interface</a></li>
+<li><a class="reference internal" href="#python-api">Python API</a></li>
 <li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
 </ul>
 </div>
@@ -245,7 +246,7 @@ $ tycho_port=$(kubectl get service tycho-api --output json | jq .spec.ports[0].p
 <div class="section" id="command-line-interface">
 <h1>Command Line Interface<a class="headerlink" href="#command-line-interface" title="Permalink to this headline">¶</a></h1>
 <p>You can use Tycho from the command line to interact with the cluster.</p>
-<p>Add the CLI tool to your path (if youve cloned the <a class="reference external" href="https://github.com/heliumplusdatastage/tycho">repo</a>) with:</p>
+<p>Clone the <a class="reference external" href="https://github.com/heliumplusdatastage/tycho">repo</a>) and add the bin directory to your path:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>export PATH=&lt;repo&gt;/bin:$PATH
 </pre></div>
 </div>
@@ -284,6 +285,70 @@ $ wget --quiet -O- http://$mkip:$(tycho status | grep jupyter | grep -v PORT | a
 </div>
 <p>or delete all running services with:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ tycho down $(tycho status -terse)
+</pre></div>
+</div>
+</div>
+<div class="section" id="python-api">
+<h1>Python API<a class="headerlink" href="#python-api" title="Permalink to this headline">¶</a></h1>
+<p>To use Tycho from Python, clone the repo and put it in your PYTHONPATH:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ export PYTHONPATH=&lt;path/to/tycho/repo&gt;:$PATH
+</pre></div>
+</div>
+<p>To connect to a Tycho instance running inside Kubernetes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tycho.client</span> <span class="k">import</span> <span class="n">TychoFactory</span>
+<span class="n">client_factory</span> <span class="o">=</span> <span class="n">TychoClientFactory</span> <span class="p">()</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">client_factory</span><span class="o">.</span><span class="n">get_client</span> <span class="p">()</span>
+</pre></div>
+</div>
+<p>To connect to a locally running instance:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tycho.client</span> <span class="k">import</span> <span class="n">TychoClient</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">TychoClient</span> <span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;http://localhost:5000&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To start a simple service:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">client</span><span class="o">.</span><span class="n">start</span> <span class="p">(</span>
+  <span class="n">request</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;test&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;env&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;LOCAL_STORE&quot;</span> <span class="p">:</span> <span class="s2">&quot;/data&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;HOST_PATH&quot;</span> <span class="p">:</span> <span class="s2">&quot;8888&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;system&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;services&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;jupyter-datascience&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;jupyter/datascience-notebook&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;entrypoint&quot;</span><span class="p">:</span> <span class="s2">&quot;start.sh jupyter lab --LabApp.token=&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;ports&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;$HOST_PORT:8888&quot;</span>
+          <span class="p">],</span>
+          <span class="s2">&quot;volumes&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;$LOCAL_STORE:/mydata&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;./:/mydata1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;./home:/mydata2&quot;</span>
+          <span class="p">],</span>
+          <span class="s2">&quot;deploy&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;resources&quot;</span><span class="p">:</span> <span class="p">{</span>
+              <span class="s2">&quot;limits&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;cpus&quot;</span><span class="p">:</span> <span class="s2">&quot;0.01&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;memory&quot;</span><span class="p">:</span> <span class="s2">&quot;50M&quot;</span>
+              <span class="p">},</span>
+              <span class="s2">&quot;reservations&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;cpus&quot;</span><span class="p">:</span> <span class="s2">&quot;0.01&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;memory&quot;</span><span class="p">:</span> <span class="s2">&quot;20M&quot;</span>
+              <span class="p">}</span>
+            <span class="p">}</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;services&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;jupyter-datascience&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;port&quot;</span><span class="p">:</span> <span class="s2">&quot;8888&quot;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">})</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">start</span> <span class="p">(</span><span class="n">request</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
