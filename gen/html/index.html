@@ -237,8 +237,9 @@ service/tycho-api created
 <h2>3. Within GKE from the Google Cloud Shell<a class="headerlink" href="#within-gke-from-the-google-cloud-shell" title="Permalink to this headline">¶</a></h2>
 <p>Tycho can be used in Google Kubernetes Engine (GKE). Install the Kubernetes artifacts from the gcloud SDK or shell as above.</p>
 <p>Once applications are deployed with Tycho, the load balancer service will provision an public IP address for the service. To use this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ lb_ip=$(kubectl get svc tycho-api -o json | jq .status.loadBalancer.ingress[0].ip | sed -e s,\&quot;,,g)
-$ tycho_port=$(kubectl get service tycho-api --output json | jq .spec.ports[0].port)
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ tycho status
+SYSTEM                         GUID                                IP_ADDRESS      PORT
+jupyter-datascience            4987932d9dfb44e0b93479538d2ef10d    35.221.9.27     31934
 </pre></div>
 </div>
 </div>

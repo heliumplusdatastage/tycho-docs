@@ -82,8 +82,9 @@ Tycho can be used in Google Kubernetes Engine (GKE). Install the Kubernetes arti
 
 Once applications are deployed with Tycho, the load balancer service will provision an public IP address for the service. To use this::
 
-       $ lb_ip=$(kubectl get svc tycho-api -o json | jq .status.loadBalancer.ingress[0].ip | sed -e s,\",,g)
-       $ tycho_port=$(kubectl get service tycho-api --output json | jq .spec.ports[0].port)
+       $ tycho status
+       SYSTEM                         GUID                                IP_ADDRESS      PORT
+       jupyter-datascience            4987932d9dfb44e0b93479538d2ef10d    35.221.9.27     31934
 
 Command Line Interface
 ======================
